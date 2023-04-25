@@ -9,6 +9,10 @@ import { useProductStore } from '@/stores/ProductStore.js'
 const productStore = new useProductStore()
 // const { products } = toRefs(productStore)
 
+
+// init page
+productStore.fill()
+
 </script>
 
 <template>
