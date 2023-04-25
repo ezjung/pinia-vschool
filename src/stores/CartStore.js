@@ -14,6 +14,20 @@ export const useCartStore = defineStore("CartStore", {
     grouped: (state) => groupBy(state.items, (item) => item.name),
     // groupCount: (state) => (name) => state.grouped[name]?.length || 0,
     groupCount: (state) => (name) => state.grouped[name].length,
+    getTotal: (state) => {
+      // let total = 0;
+      // for (const name in state.grouped) {
+      //   console.log(name);
+      //   const price = parseInt(state.grouped[name][0].price);
+      //   const count = parseInt(state.groupCount(name));
+      //   // console.log(state.grouped);
+      //   // console.log(price, count);
+      //   // console.log(price * count);
+      //   total += price * count;
+      // }
+      // return total;
+      return state.items.reduce((preValue, item) => preValue + item.price, 0);
+    },
   },
   actions: {
     addItems(count, product) {
@@ -26,6 +40,9 @@ export const useCartStore = defineStore("CartStore", {
 
       // cartStore.items.push(product)
       console.log(this.items);
+    },
+    removeItem(itemName) {
+      this.items = this.items.filter((item) => item.name !== itemName);
     },
   },
 });

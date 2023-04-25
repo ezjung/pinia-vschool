@@ -26,10 +26,10 @@ const active = ref(false);
       <div v-if="cartStore.isNotEmpty">
         <ul class="items-in-cart">
           <CartItem v-for="(items, name) in cartStore.grouped" :key="name" :product="items[0]"
-            :count="cartStore.groupCount(name)" @updateCount="" @clear="" />
+            :count="cartStore.groupCount(name)" @clear="cartStore.removeItem(name)" />
         </ul>
         <div class="flex justify-end text-2xl mb-5">
-          Total: <strong>$40</strong>
+          Total:&nbsp;<strong>${{ cartStore.getTotal }}</strong>
         </div>
         <div class="flex justify-end">
           <!-- Initialize cartStore.$reset() in AppButton -->
