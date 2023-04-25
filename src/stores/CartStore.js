@@ -4,6 +4,13 @@ export const useCartStore = defineStore("CartStore", {
   state: () => ({
     items: [],
   }),
+  getters: {
+    count() {
+      return this.items.length;
+    },
+    // When arrow functions add state arguments
+    isNotEmpty: (state) => state.count > 0,
+  },
   actions: {
     addItems(count, product) {
       console.log(count);
