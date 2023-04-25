@@ -35,7 +35,7 @@ const active = ref(false);
         <div class="flex justify-end">
           <!-- Initialize cartStore.$reset() in AppButton -->
           <AppButton class="secondary mr-2" @click="cartStore.$reset()">Clear Cart</AppButton>
-          <AppButton class="primary">Checkout</AppButton>
+          <AppButton class="primary" @click="cartStore.checkout">Checkout</AppButton>
         </div>
       </div>
       <!-- Uncomment and use condition to show when cart is empty -->
